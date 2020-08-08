@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+
+
+{% block body %}
+
+<link rel="stylesheet" href="/css/blog.css">
+<h1 class="text-center">Articles</h1>
+
+{%  for article in articles %}
+ <div class="article-card blog-post">
+                <a href="#" class="article-card-image" style="background-image:url('<%=blogpost.thumbnail %>'); background-size: cover; background-position: center center;">
+                </a> 
+            <div class="article-card-infos">
+                <h2 class="blog-title"><a href="/blog/{{article.id}}">{{article.name}}</a></h2>
+                <div class="blog-info">
+                    <span class="blog-category"><a href="/blog/categorie/<%=blogpost.category%>/1">{{article.category}}</a></span> <span class="blogpost-author">{{article.author.username}}</span>
+                </div>
+                
+                <div class="blog-description">
+                    <p>
+                    {{article.text}}
+                
+                    </p>
+                </div>
+                <a class="btn btn-outline-primary mb-4 mt-1 blog-button" href="/blog/{{article.id}}">Lire la suite</a>
+ 
+            </div>
+        </div>
+{% endfor %}
+
+{% endblock %}
